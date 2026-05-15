@@ -212,6 +212,14 @@
     text-decoration: none;
 
 }
+.spacemachine a {
+    position: absolute;
+    top:13.5em;
+    left:3em;
+    color:white;
+    font-family: "space";
+    text-decoration: none;
+}
 /*calculadora*/
 .f_calc {
     background-image: url("Imagens/Galaxias1.jpg");
@@ -351,7 +359,7 @@
 .numero_slot_machine{
     position: absolute;
     top: 13em;
-    right: 52em;
+    right: 51.9em;
     font-family: space;
     color: white;
     border-style: solid;
@@ -364,7 +372,7 @@
 .numero1_slot_machine{
     position: absolute;
     top: 13em;
-    right: 48em;
+    right: 47.95em;
     font-family: space;
     color: white;
     border-style: solid;
@@ -377,7 +385,7 @@
 .numero2_slot_machine{
     position: absolute;
     top: 13em;
-    right: 44em;
+    right: 44.05em;
     font-family: space;
     color: white;
     border-style: solid;
@@ -393,6 +401,12 @@
     right: 46.8em;
     font-family: space;
     color: white;
+}
+/*spaceship lander*/
+.f_spl {
+    background-imagee: url("Imagens/Galaxias2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 /*botao do inicio e da seta*/
 .ini a {
