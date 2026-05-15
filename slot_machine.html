@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" />
+        <title>Slot machine</title>
+    </head>
+    <body class="f_slot_machine">
+        <h2 class="titulo_slot_machine">
+            Slot Machine    
+        </h2> 
+        <button class="but_slot_machine" onclick="Tryyourluck()">Tenta a tua sorte!</button> 
+        <button class="but1_slot_machine"onclick="stop()">Stop</button>
+        <p>
+            <span class="numero_slot_machine"id="num1"></span>
+            <span class="numero1_slot_machine"id="num2"></span>
+            <span class="numero2_slot_machine"id="num3"></span>
+        </p>
+        <p class="mensagem" id="ac"> </p>
+        <h2 class="ini"><a href="index.html">    
+                Início
+                </a></h2>
+        <h2 class="seta_para_tras"><a href= "projetojs.html">
+            ⬅
+        </a></h2>
+        <script>
+           const num1 = document.getElementById("num1")
+           const num2 = document.getElementById("num2")
+           const num3 = document.getElementById("num3")
+           let ac = document.getElementById("ac")
+           let Timer
+           let timeout = 0
+           let n1, n2, n3
+
+           function Tryyourluck() {
+            ac.innerHTML = "";
+            n1 = Math.round(Math.random() * 9)
+            n2 = Math.round(Math.random() * 9)
+            n3 = Math.round(Math.random() * 9)
+            num1.innerHTML = n1
+            num2.innerHTML = n2
+            num3.innerHTML = n3
+            timeout = timeout + 25
+            if (timeout < 200)
+                Timer = setTimeout(Tryyourluck,timeout)
+            else
+                stop()
+           }
+           function stop() {
+            clearTimeout(Timer)
+            timeout = 0
+            if (n1 == n2 && n2 == n3)
+                ac.innerHTML = "Sortudo!"
+            else 
+                ac.innerHTML = "Azarado!"
+           } 
+        </script>
+    </body>
+</html>

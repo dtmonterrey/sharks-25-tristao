@@ -203,9 +203,9 @@
     color: white;
 
 }
-.adivinha2 a {
+.slotmachine a {
     position: absolute;
-    top:3em;
+    top:11em;
     left:3em;
     color:white;
     font-family: "space";
@@ -325,16 +325,76 @@
     width: 20em;
     display:none;
 }
-/*Jogo da Adivinha 2*/
-.adivinha2 {
-    position: absolute;
-    top: 9em;
-    left: 3em;
-    font-family: "space";
-    color: white;
-
+/*slot machine*/
+.f_slot_machine{
+    background-image: url("Imagens/Galaxias1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-/*botao do inicio*/
+.titulo_slot_machine{
+    position: absolute;
+    top: 3.5em;
+    right: 29.2em;
+    color:white;
+    font-family: "space" ;
+}
+.but_slot_machine{
+    position: absolute;
+    top: 13em;
+    right: 56.8em;
+}
+.but1_slot_machine{
+    position: absolute;
+    top: 13em;
+    right: 52.7em;
+}
+.numero_slot_machine{
+    position: absolute;
+    top: 13em;
+    right: 52em;
+    font-family: space;
+    color: white;
+    border-style: solid;
+    border-color:rgb(255, 115, 33) ;
+    border-width: 5px;
+    padding: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.numero1_slot_machine{
+    position: absolute;
+    top: 13em;
+    right: 48em;
+    font-family: space;
+    color: white;
+    border-style: solid;
+    border-color:rgb(255, 115, 33) ;
+    border-width: 5px;
+    padding: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px
+}
+.numero2_slot_machine{
+    position: absolute;
+    top: 13em;
+    right: 44em;
+    font-family: space;
+    color: white;
+    border-style: solid;
+    border-color:rgb(255, 115, 33) ;
+    border-width: 5px;
+    padding: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px
+}
+.mensagem{
+    position: absolute;
+    top: 16em;
+    right: 46.8em;
+    font-family: space;
+    color: white;
+}
+/*botao do inicio e da seta*/
 .ini a {
     position: absolute;
     bottom: 1em;
@@ -350,5 +410,20 @@
     padding-top: 3px;
     padding-bottom: 8px;
     box-shadow: 10px 10px white;
-
+}
+.seta_para_tras a {
+    position: absolute;
+    bottom: 0.4em;
+    left: 0.5em;
+    color:white;
+    font-family: "space" ;  
+    text-decoration: none;
+    font-size: 2em ;
+    border-style: solid;
+    border-color:rgb(255, 115, 33) ;
+    border-width: 10px;
+    padding: 10px;
+    padding-top: 0.1px;
+    padding-bottom: 0.1px;
+    box-shadow: 10px 10px white;
 }
