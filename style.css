@@ -212,7 +212,7 @@
     text-decoration: none;
 
 }
-.spacemachine a {
+.spaceshiplander a{
     position: absolute;
     top:13.5em;
     left:3em;
@@ -405,6 +405,21 @@
 /*spaceship lander*/
 .f_spl {
     background-imagee: url("Imagens/Galaxias2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/*--Lua--*/
+.canvas_lua {
+    border: 1px solid #000000;
+    display: block;
+    margin: auto;
+    width: 60em;
+    position: absolute;
+    top: 5px;
+    right: 19em;
+}
+.f_spl_l {
+    background-image: url("Imagens/Galaxias2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }

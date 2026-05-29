@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lunar Lander</title>
+        <link href="style.css" rel="stylesheet" />
+    </head>
+    <body class="f_spl_l">
+        <canvas class="canvas_lua" id="canvas" width="640" height="480"></canvas>
+        <h2 class="seta_para_tras"><a href= "spaceship_lander_menu.html">
+            ⬅
+        </a></h2>
+    <script>
+        var canvas = document.getElementById('canvas');
+        const width = 640; const height = 480;
+
+        function randomHeight() {
+        // Mantém o terreno no terço inferior para não ocupar a tela toda
+        return Math.round(Math.random() * (height / 3)) * -1 + height;
+        }
+
+        function drawTerrain(breaks) {
+            const ctx = canvas.getContext('2d');
+            const segmento = width / breaks;
+            let currentY = 400;
+            let flatsCount = 0; // Contador de espaços retos
+
+            ctx.beginPath();
+            ctx.moveTo(0, currentY);
+
+            for (let i = 1; i < breaks; i++) {
+            // Se ainda não fizemos 3 retas E a sorte ajudar (ou o loop estiver a acabar)
+                if (flatsCount < 3 && (Math.random() < 0.4 || i > breaks - 4)) {
+                flatsCount++;
+                // currentY continua o mesmo, criando a reta
+                } else {
+                currentY = randomHeight();
+                }
+                ctx.lineTo(segmento * i, currentY);
+            }
+
+            ctx.lineTo(width, 400);
+            ctx.lineTo(width, height);
+            ctx.lineTo(0, height);
+            ctx.fillStyle = 'grey';
+            ctx.fill();
+
+            
+        }
+
+        drawTerrain(8);
+
+        
+        </script>
+    </body> 
+</html>
