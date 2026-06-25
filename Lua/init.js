@@ -1,10 +1,14 @@
-import { canvas, width, height } from './globals.js'
-const image = document.getElementById("foguete");
+import { drawTerrain } from './terreno.js'
+import spaceship from './spaceship.js'
 
+const nave = spaceship.nave
 
-export function init() {
+export async function init() {
+    drawTerrain(8);
+
     // carregar nave
-    // colocar no canvas
-}
+    nave.image = new Image()
+    nave.image.src = nave.sprite
+    return nave.image.decode()
 
-//renderizar palco (fundo) e nave 
+}
