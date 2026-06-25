@@ -1,7 +1,9 @@
 import globals from './globals.js'
+import { terrain } from './terreno.js'
 
 const ctx = globals.ctx
 const width = globals.width
+
 const gravity = 9
 
 const nave = {
@@ -13,6 +15,12 @@ const nave = {
     posy: 0,
     momentumx: 0,
     momentumy: 0,
+    bottom: () => {
+        return nave.posy + nave.height
+    }, 
+    middle: () => {
+        return nave.posx + nave.width / 2
+    },
     draw: () => {
         ctx.drawImage(nave.image, nave.posx, nave.posy, nave.width, nave.height)
     },
@@ -22,9 +30,12 @@ const nave = {
         // calculate new position
         nave.momentumy += gravity
         nave.posy += nave.momentumy 
-        if (nave.posy - nave.height > 400) {
-            nave.posy = 400 - nave.height
+        const colision = terrain.checkColision(nave.middle(), nave.bottom())
+        if (colision) {
+            nave.posy = colision - nave.height
+            console.log('COLISION ' + colision)
         }
+        console.log(nave.posy)
         // redraw
         nave.draw()
     }

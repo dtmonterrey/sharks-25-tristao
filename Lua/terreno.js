@@ -4,9 +4,37 @@ const ctx = globals.ctx
 const width = globals.width
 const height = globals.height
 
-const terrain = {
-    segments: [],
+function calcLinearParamA(x1, y1, x2, y2) {
+    return (y2 - y1) / (x2 - x1)
 }
+function calcLinearParamB(x1, y1, a) {
+    return y1 - (a * x1)
+}
+function isPointAboveSegment(x1, y1, x2, y2, x, y) {
+    const a = calcLinearParamA(x1, y1, x2, y2)
+    const b = calcLinearParamB(x1, y1, a)
+    const calculated_y = a * x + b
+    return {
+        isAbove: y > calculated_y,
+        colision_y: calculated_y
+    }
+}
+
+export const terrain = {
+    segments: [],
+    checkColision: (x, y) => {
+        let colision = false
+        terrain.segments.forEach( (segment) => {
+            if (!colision && x >= segment.x1 && x <= segment.x2) {
+                const isAbove = isPointAboveSegment(segment.x1, -segment.y1, segment.x2, -segment.y2, x, -y)
+                if (!isAbove.isAbove)
+                colision = -isAbove.colision_y
+            }
+        })
+        return colision
+    }
+}
+
 function randomHeight() {
     // Mantém o terreno no terço inferior para não ocupar a tela toda
     let randomHeight = Math.round(Math.random() * (height / 3)) * -1 + height
@@ -121,8 +149,4 @@ export function drawTerrain(breaks) {
     }); 
     ctx.stroke() 
 
-}
-
-export default {
-    terrain: terrain
 }
