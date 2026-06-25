@@ -4,21 +4,43 @@ import { terrain } from './terreno.js'
 const ctx = globals.ctx
 const width = globals.width
 
-const gravity = 9
+const gravity = 1
+const thruster_up = 2
+const thruster_left = 3
+const thruster_right = 3
+
 const NORMAL = 1
 const LANDED = 0
 const COLISION = -1
+const UP = 2
+const LEFT = 3
+const RIGHT = 4
+
+export const statuses = {
+    NORMAL: NORMAL,
+    LANDED: LANDED,
+    COLISION: COLISION,
+    UP: UP,
+    LEFT: LEFT,
+    RIGHT: RIGHT,
+}
 
 const nave = {
     sprite: {
         nave: "/Imagens/foguete.png",
         explosao: "/Imagens/foguete_explosao.png",
         landed: "/Imagens/foguete_landed.png",
+        up: "/Imagens/foguete_up.png",
+        left: "/Imagens/foguete_left.png",
+        right: "/Imagens/foguete_right.png",
     },
     image: {
         nave: null,
         explosao: null,
-        landed: null
+        landed: null,
+        up: null,
+        left: null,
+        right: null,
     },
     ship: null,
     width: 50,
@@ -36,9 +58,22 @@ const nave = {
             case LANDED:
                 nave.ship = nave.image.landed
                 break
+            case UP:
+                nave.ship = nave.image.up
+                nave.momentumy -= thruster_up
+                break
+            case LEFT:
+                nave.ship = nave.image.left
+                break
+            case RIGHT:
+                nave.ship = nave.image.right
+                break
             case NORMAL:
+                nave.ship = nave.image.nave
+            default:
                 break
         }
+        console.log(nave.momentumy)
         nave.status = status
     },
     bottom: () => {
