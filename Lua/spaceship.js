@@ -7,8 +7,15 @@ const width = globals.width
 const gravity = 9
 
 const nave = {
-    sprite: "/Imagens/foguete.png",
-    image: null,
+    sprite: {
+        nave: "/Imagens/foguete.png",
+        explosao: "/Imagens/foguete_explosao.png",
+    },
+    image: {
+        nave: null,
+        explosao: null,
+    },
+    ship: null,
     width: 50,
     height: 104,
     posx: 0,
@@ -22,7 +29,7 @@ const nave = {
         return nave.posx + nave.width / 2
     },
     draw: () => {
-        ctx.drawImage(nave.image, nave.posx, nave.posy, nave.width, nave.height)
+        ctx.drawImage(nave.ship, nave.posx, nave.posy, nave.width, nave.height)
     },
     react: () => {
         // clear canvas
@@ -33,6 +40,7 @@ const nave = {
         const colision = terrain.checkColision(nave.middle(), nave.bottom())
         if (colision) {
             nave.posy = colision - nave.height
+            nave.ship = nave.image.explosao
             console.log('COLISION ' + colision)
         }
         console.log(nave.posy)
