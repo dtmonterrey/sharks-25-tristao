@@ -13,9 +13,15 @@ export async function init() {
     // explosao
     nave.image.explosao = new Image()
     nave.image.explosao.src = nave.sprite.explosao
+    // landed
+    nave.image.landed = new Image()
+    nave.image.landed.src = nave.sprite.landed
+    // wait for the download of the images
     return nave.image.nave.decode().then( () => {
         nave.ship = nave.image.nave
-        nave.image.explosao.decode()
+        nave.image.explosao.decode().then( () => {
+            nave.image.landed.decode()
+        })
     })
 
 }

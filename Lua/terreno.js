@@ -32,6 +32,17 @@ export const terrain = {
             }
         })
         return colision
+    },
+    checkLanded: (x, y) => {
+        const colision = terrain.checkColision(x, y)
+        // we have a colision, check if in the landing pad
+        let landed = false
+        terrain.segments.forEach( (segment) => {
+            if (!landed && x >= segment.x1 && x <= segment.x2 && segment.landing) {
+                landed = colision
+            }
+        })
+        return landed
     }
 }
 
