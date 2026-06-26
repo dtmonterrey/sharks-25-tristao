@@ -3,11 +3,17 @@ import spaceship, { statuses } from "./spaceship.js"
 const nave = spaceship.nave
 
 document.addEventListener("keydown", (ev) => {
-    console.log(ev)
+    ev.preventDefault()
     switch (ev.key) {
         case 'ArrowUp':
             nave.setStatus(statuses.UP)
             break
+        case 'ArrowLeft':
+            nave.setStatus(statuses.LEFT)
+           break 
+        case 'ArrowRight':
+            nave.setStatus(statuses.RIGHT)
+           break 
     }
 })
 

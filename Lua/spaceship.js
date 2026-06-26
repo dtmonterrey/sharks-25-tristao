@@ -4,10 +4,10 @@ import { terrain } from './terreno.js'
 const ctx = globals.ctx
 const width = globals.width
 
-const gravity = 1
-const thruster_up = 2
-const thruster_left = 3
-const thruster_right = 3
+const gravity = 0.5
+const thruster_up = 0.7
+const thruster_left = 1
+const thruster_right = 1
 
 const NORMAL = 1
 const LANDED = 0
@@ -64,9 +64,11 @@ const nave = {
                 break
             case LEFT:
                 nave.ship = nave.image.left
+                nave.momentumx += thruster_left
                 break
             case RIGHT:
                 nave.ship = nave.image.right
+                nave.momentumx -= thruster_right 
                 break
             case NORMAL:
                 nave.ship = nave.image.nave
@@ -89,7 +91,8 @@ const nave = {
         if (nave.status === COLISION || nave.status === LANDED) return
         // clear canvas
         ctx.clearRect(nave.posx, nave.posy, nave.width, nave.height)
-        // calculate new position
+
+        // calculate new vertical position
         nave.momentumy += gravity
         nave.posy += nave.momentumy 
         // check for landing
@@ -97,17 +100,18 @@ const nave = {
         if (landed) {
             nave.posy = landed - nave.height
             nave.setStatus(LANDED)
-            console.log('LANDED ' + landed)
         } else {
             // check for a colision
             const colision = terrain.checkColision(nave.middle(), nave.bottom())
             if (colision) {
                 nave.posy = colision - nave.height
                 nave.setStatus(COLISION)
-                console.log('COLISION ' + colision)
             } 
         }
-        console.log(nave.posy)
+        
+        // calculate new horizontal position
+        nave.posx += nave.momentumx
+
         // redraw
         nave.draw()
     }
